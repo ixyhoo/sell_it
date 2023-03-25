@@ -1,6 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe "Classifieds", type: :request do
+  describe "get/classifieds" do
+    
+    
+    before {
+      FactoryBot.create_list(:classified, 3) 
+       get "/classifieds"
+    }
+    it "works" do
+      expect(response).to be_successful
+    end
+    it "returns all the entries" do
+      expect(parsed_body.count).to eq Classified.all.count
+    end
+  end
+
  describe 'get/classifieds/:id' do
   let(:classified) { FactoryBot.create :classified }
 

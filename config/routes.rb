@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 get "ping" => "application#ping"
   # Defines the root path route ("/")
   # root "articles#index"
-  resources :classifieds, only: :show
+  resources :classifieds, only: [:show, :index]
 end
